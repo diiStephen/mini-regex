@@ -1,4 +1,3 @@
-
 type PtrExpression = Box<Expression>;
 
 #[derive(Debug, Clone)]
