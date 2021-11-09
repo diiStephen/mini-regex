@@ -1,9 +1,12 @@
+
+type PtrExpression = Box<Expression>;
+
 #[derive(Debug, Clone)]
 pub enum Expression {
     LITERAL(char),
-    STAR(Box<Expression>),
-    UNION(Box<Expression>, Box<Expression>),
-    CONCAT(Box<Expression>, Box<Expression>),
+    STAR(PtrExpression),
+    UNION(PtrExpression, PtrExpression),
+    CONCAT(PtrExpression, PtrExpression),
     EMPTY
 }
 
@@ -14,7 +17,6 @@ mod tests {
     #[test]
     pub fn test_debug_expression() {
         let u = LITERAL('a');
-        let v = LITERAL('b');
         let s = STAR(Box::new(u.clone()));
         let exp = UNION(Box::new(u), Box::new(s));
         print!("regex: {:?}", exp);
